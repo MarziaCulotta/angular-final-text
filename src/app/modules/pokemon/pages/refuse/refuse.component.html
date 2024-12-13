@@ -1,0 +1,14 @@
+<div class="card text-center">
+  <div class="card-header">REFUSED POKEMON</div>
+  <div class="card-body px-4 mt-2 mb-2" *ngFor="let choice of refuseChoice">
+    <div class="pokemon-details d-flex align-items-center">
+      <img class="pokemon-img pe-3" src={{choice.sprites}} alt="pokemon-img">
+      <span class="pokeomn-numb pe-3">#{{choice.id}}</span>
+      <span class="name">{{choice.name}}</span>
+      <div>
+        <button class="btn btn-danger ms-3" (click)="showDetails.emit(choice)">Show</button>
+        <button class="btn btn-danger ms-3" (click)="delete.emit(choice.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

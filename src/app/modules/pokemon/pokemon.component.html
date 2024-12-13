@@ -1,0 +1,30 @@
+<div class="main-container d-flex justify-content-center mt-5">
+
+  <angprj-refuse class="me-3" (showDetails)="showPokemonDetails($event)" (delete)="deleteRefusedPokemon($event)" [refuseChoice]="refuseChoice"></angprj-refuse>
+
+  <div class="card-container p-3 mx-3">
+    <p class="card-text text-center mt-2 py-2 pe-3">{{pokemon$.name}}</p>
+    <div class="pokemon-details d-flex justify-content-around align-items-center">
+      <div class="text-details p-3">
+        <div>ID: {{pokemon$.id}}</div>
+        <div>NAME: <span class="name">{{pokemon$.name}}</span></div>
+        <div>WEIGHT: {{pokemon$.weight}}</div>
+        <div>HEIGHT: {{pokemon$.height}}</div>
+      </div>
+      <img src={{pokemon$.sprites}} alt="pokemon-img">
+    </div>
+    <div class="button-container d-flex justify-content-between">
+      <button class="btn btn-success mt-2" (click)="catch()" [disabled]="catchChoice.length > 5">Cattura</button>
+      <button class="btn btn-danger mt-2" (click)="notCatch()">Rifiuta</button>
+    </div>
+    <div class="savage-pokemon-container mt-4 p-3">E' apparso un {{pokemon$.name}} selvaggio!
+    </div>
+  </div>
+
+  <angprj-catch class="ms-3" (showDetails)="showPokemonDetails($event)" (delete)="deleteCatchedPokemon($event)"  [catchChoice]="catchChoice"></angprj-catch>
+
+</div>
+
+<angprj-pokemon-details *ngIf="detailIsVisible" (close)="close($event)" [pokemon]="selectedPokemon"></angprj-pokemon-details>
+
+
